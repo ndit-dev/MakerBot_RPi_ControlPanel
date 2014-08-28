@@ -50,6 +50,7 @@ This should make your Bot play a song, if it does... say: - Cool, really cool! o
 
 # Sources
 This project is a fork from https://github.com/silvanmelchior/RPi_Cam_Web_Interface and dependent on having https://github.com/makerbot/s3g installed to be able to control your bot. 
-For full documentation about the python commands to control the printer, visit the s3g-git
-run ```pydoc makerbot_driver.s3g```on your RPi to see the commands available
+For full documentation about the python commands to control the printer, visit the s3g-git.
+Or run ```pydoc makerbot_driver.s3g```on your RPi to see the commands available.
+
 For full documentation of the simple and brilliant RPi_Cam_Web_interface, visit silvans git
