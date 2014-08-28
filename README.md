@@ -13,10 +13,8 @@ With this installed on your Raspberry Pi with a PiCam attached you will be able 
 # TODO
  - Fix and check that the installer is working as intended
  - test scripts (and adopt to) with a printer with dual tool heads and maybe a heated print bed (Replicator 2x)
- - Secure the php shell_exec in www/cmd_bot_pipe.php, atm you can more or less run commandline via $_GET injection
- - Finish installation instructions
+ - Secure the php shell_exec in www/cmd_bot_pipe.php, atm you can more or less run commandline by injecting the $_GET
  - make some kind of global setting for serial port to be set in all the python scripts
- - uptade the installation script so that www-data gets added to the group dialout and add www-data to sudoers to be able to use python
  - make shutdown button for the RPi on the web interface
 
 # Install
