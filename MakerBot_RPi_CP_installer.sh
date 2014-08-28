@@ -84,8 +84,13 @@ case "$1" in
 
         sudo cp -r etc/motion/motion.conf /etc/motion/
         sudo chmod 640 /etc/motion/motion.conf
+        
+        sudo usermod -a -G dialout www-data
+        sudo cp etc/sudoers /etc/sudoers
+        sudo cp -r etc/cron.d/ /etc/
 
         echo "Installer finished"
+        echo "You should reboot your RPi now..."
         ;;
 
   start)
