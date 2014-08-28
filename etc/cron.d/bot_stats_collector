@@ -1,0 +1,9 @@
+## /etc/cron.d/bot_stats_collector
+# This cron collects statistics from the connected bot every 5th minute
+#
+
+
+# m h dom mon dow user  command
+*/5 *   * * *   www-data        python /var/www/srvcmd/mbot_cmd.py
+
+
