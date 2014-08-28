@@ -10,6 +10,8 @@ With this installed on your Raspberry Pi with a PiCam attached you will be able 
  - See bot statistics such as build time, temperature of tool heads etc
  - be able to abort a print that seems to be failing from the web interface.
 
+For the moment I have only tested this on my own Makerbot Replicator2, but this should work (maybe need adjustments) to work with other models from MakerBot. But I only have one Replicator2 at hand, so not able to test it with other models my self.
+
 # TODO
  - Fix and check that the installer is working as intended
  - test scripts (and adopt to) with a printer with dual tool heads and maybe a heated print bed (Replicator 2x)
@@ -46,9 +48,12 @@ sudo ./MakerBot_RPi_CP_installer.sh
 ```python /var/www/srvcmd/mbot_play_song.py```
 This should make your Bot play a song, if it does... say: - Cool, really cool! out loud
 
-# Sources
-This project is a fork from https://github.com/silvanmelchior/RPi_Cam_Web_Interface and dependent on having https://github.com/makerbot/s3g installed to be able to control your bot. 
+# Sources and Copyright notice
+First, this is a fork from Silvan Melchiors git (https://github.com/silvanmelchior/RPi_Cam_Web_Interface). I have just added the ability to control the bot and made som graphical changes to the web interface. Be sure to keep his references if you fork this further.
+You are free to copy, share, modify and redistribute my contributions however you see fit, as long as the original creator is respected, and both of us are credited.
+
+
 For full documentation about the python commands to control the printer, visit the s3g-git.
 Or run ```pydoc makerbot_driver.s3g```on your RPi to see the commands available.
 
-For full documentation of the simple and brilliant RPi_Cam_Web_interface, visit silvans git
+For full documentation of the simple and brilliant RPi_Cam_Web_interface, visit silvans git mentioned above.
