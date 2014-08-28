@@ -22,6 +22,7 @@ With this installed on your Raspberry Pi with a PiCam attached you will be able 
 
 # Install
 <b>IMPORTANT, the installer is not finished yet, you wont be able to fully install this whithout trail and error, hold up, this will be finished in a few days</b>
+
 1. 	install raspian on your Pi and connect and activate your PiCam
 2. 	install the makerbot_driver from https://github.com/makerbot/s3g
 3. 	Clone this git and run 
