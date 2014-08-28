@@ -1,6 +1,5 @@
-### IMPORTANT ! ###
-### WORK IN PROGRESS, this project is not up to date yet!!!
-### IMPORTANT ! ###
+# IMPORTANT !
+### WORK IN PROGRESS, this project is far from bug free ATM, be patient!!!
 
 # About
 <b>Intention of this project</b>: to be able to control the bot and abort failing prints without being near the printer via computer or smartphone
@@ -25,21 +24,21 @@ With this installed on your Raspberry Pi with a PiCam attached you will be able 
 
 1. 	install raspian on your Pi and connect and activate your PiCam and set time zone with 
 ```sudo raspi-config```
-2.	update your RPi
+2.	Update your RPi
 ```sudo apt-get update && sudo apt-get upgrade```
-2. 	install the makerbot_driver from https://github.com/makerbot/s3g
+3. 	install the makerbot_driver from https://github.com/makerbot/s3g
 ```git clone https://github.com/makerbot/s3g
 cd s3g
 sudo python setup.py install
 ```
+
 in the s3g documentation, the suggest that you create a virtual environment for makerbots own pyserial, this shouldn't be needed for this, the built in pyserial in raspian works fine.
-3. 	Clone this git and run the installer
-```
-git clone https://github.com/ndit-dev/MakerBot_RPi_ControlPanel
+4. 	Clone this git and run the installer
+```git clone https://github.com/ndit-dev/MakerBot_RPi_ControlPanel
 cd MakerBot_RPi_ControlPanel
 sudo ./MakerBot_RPi_CP_installer.sh
 ```
-4. 	Test that communications from your RPi to your Bot is working properly by running this command
+5. 	Test that communications from your RPi to your Bot is working properly by running this command
 	```python /var/www/srvcmd/mbot_play_song.py```
 	This should make your Bot play a song, if it does... say: - Cool, really cool! out loud
 
