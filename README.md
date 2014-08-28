@@ -26,7 +26,7 @@ With this installed on your Raspberry Pi with a PiCam attached you will be able 
 1. 	install raspian on your Pi and connect and activate your PiCam and set time zone with 
 ```sudo raspi-config```
 2.	update your RPi
-```sudo apt-get update && sudo apt-get```
+```sudo apt-get update && sudo apt-get upgrade```
 2. 	install the makerbot_driver from https://github.com/makerbot/s3g
 ```git clone https://github.com/makerbot/s3g
 cd s3g
