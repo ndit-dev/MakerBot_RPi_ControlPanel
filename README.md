@@ -46,7 +46,7 @@ sudo ./MakerBot_RPi_CP_installer.sh
 
 <b>5.</b> Test that communications from your RPi to your Bot is working properly by running this command
 ```python /var/www/srvcmd/mbot_play_song.py```
-This should make your Bot play a song. If it does, quicly make your best dance move and celebrate your accomplishment
+This should make your Bot play a song. If it does, quickly make your best dance move and celebrate your accomplishment.
 
 # Sources and Copyright notice
 First, this is a fork from Silvan Melchiors git (https://github.com/silvanmelchior/RPi_Cam_Web_Interface). I have just added the ability to control the bot and made som graphical changes to the web interface. Be sure to keep his references if you fork this further.
