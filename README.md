@@ -6,7 +6,7 @@
 
 Web control panel and surveillance of your makerbot 3D-printer.
 With this installed on your Raspberry Pi with a PiCam attached you will be able to:
- - Set what your bot are printing/doing from a browser on your computer or your smart phone
+ - See what your bot are printing/doing from a browser on your computer or your smartphone
  - See bot statistics such as build time, temperature of tool heads etc
  - be able to abort a print that seems to be failing from the web interface.
 
@@ -35,7 +35,7 @@ cd s3g
 sudo python setup.py install
 ```
 
-in the s3g documentation, the suggest that you create a virtual environment for makerbots own pyserial, this shouldn't be needed for this, the built in pyserial in raspian works fine.
+in the s3g documentation, they suggest that you create a virtual environment for makerbots own pyserial, this shouldn't be needed for this project.
 
 <b>4.</b> Clone this git and run the installer
 ```
@@ -46,7 +46,7 @@ sudo ./MakerBot_RPi_CP_installer.sh
 
 <b>5.</b> Test that communications from your RPi to your Bot is working properly by running this command
 ```python /var/www/srvcmd/mbot_play_song.py```
-This should make your Bot play a song, if it does... say: - Cool, really cool! out loud
+This should make your Bot play a song. If it does, quicly make your best dance move and celebrate your accomplishment
 
 # Sources and Copyright notice
 First, this is a fork from Silvan Melchiors git (https://github.com/silvanmelchior/RPi_Cam_Web_Interface). I have just added the ability to control the bot and made som graphical changes to the web interface. Be sure to keep his references if you fork this further.
