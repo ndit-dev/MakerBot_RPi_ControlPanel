@@ -29,7 +29,7 @@
 						<input id="bot_play_song_button" type="button" class="btn-style"><br>
 						<input id="bot_blink_led" type="button" class="btn-style"><br>
 						<input id="bot_abort_button" type="button" class="btn-style"><br>
-						<input id="bot_refresh_stats_button" type="button" class="btn-style"><br>
+						<input id="bot_refresh_stats_button" type="button" class="btn-style"><br>					
 					</p>
 				</div>
 				<div class="the_cam">
@@ -39,6 +39,7 @@
 				<br><br>
 
 				<div class="bot_table_wrapper">
+					<i>Bot stats updated: <?php echo $mbot_stats['last_collect']; ?></i><br>
 					<table class="tg">
 						<tr>
 							<th colspan="2" class="tg-031e"><h3>Bot Stats</h3></th>
@@ -267,6 +268,19 @@
 							<td><input type="text" class="cam-setting" size=10 id="bitrate"><input type="button" class="cam-setting_btn" value="OK" onclick="send_cmd('bi ' + document.getElementById('bitrate').value)"></td>
 						</tr>
 					</table>
+					<br><br>
+					<table class="tg">
+						<tr>
+							<th class="tg-031e"><h2>Raspberry Commands</h2></th>
+						</tr>
+						<tr>
+							<td class="tg-031e">
+								<input id="pi_reboot" type="button" class="btn-style"><br>
+								<input id="pi_shutdown" type="button" class="btn-style"><br>
+							</td>
+						</tr>
+					</table>
+					<br><br>
 				</div>
 			</div>
 		</div>

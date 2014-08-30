@@ -29,5 +29,3 @@ Cmnd_Alias      POWER = /sbin/shutdown, /sbin/halt, /sbin/reboot, /sbin/restart
 
 #includedir /etc/sudoers.d
 pi ALL=(ALL) NOPASSWD: ALL
-www-data ALL=(ALL) NOPASSWD: /etc/bin/python 
-www-data ALL=(ALL) NOPASSWD: POWER

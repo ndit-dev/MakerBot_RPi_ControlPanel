@@ -44,6 +44,9 @@ f.write("<?php\n\n\t$mbot_stats = array(\n\n")
 
 ### Collect all the information ###
 
+# # time stamp this collection
+f.write("\t\t'last_collect' => \t'" + str(time.strftime('%a %d %b %H:%M:%S %Y')) + "',\n")
+
 # # Print Firmware version
 f.write("\t\t'frmw_ver' => \t\t'" + str((r.get_version())) + "',\n")
 

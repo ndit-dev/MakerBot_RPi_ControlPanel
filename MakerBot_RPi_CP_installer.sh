@@ -40,6 +40,11 @@ case "$1" in
         sudo rm /etc/raspimjpeg
         sudo cp -r etc/rc_local_std/rc.local /etc/
         sudo chmod 755 /etc/rc.local
+        rm /etc/cron.d/bot_stats_collector
+        
+        sudo cp etc/hostname_std/hosts /etc/hosts
+        sudo cp etc/hostname_std/hostname /etc/hostname
+        sudo cp etc/sudoers_std/sudoers /etc/sudoers
 
         echo "Removed everything"
         ;;
@@ -64,6 +69,7 @@ case "$1" in
         sudo cp -r www/* /var/www/
         sudo mkdir -p /var/www/media
         sudo chown -R www-data:www-data /var/www
+        sudo chmod 775 /var/www/ -R
         sudo mknod /var/www/FIFO p
         sudo chmod 666 /var/www/FIFO
         sudo cp -r etc/apache2/sites-available/default /etc/apache2/sites-available/
@@ -86,8 +92,13 @@ case "$1" in
         sudo chmod 640 /etc/motion/motion.conf
         
         sudo usermod -a -G dialout www-data
+        sudo usermod -a -G www-data pi
         sudo cp etc/sudoers /etc/sudoers
         sudo cp -r etc/cron.d/ /etc/
+        
+        sudo cp etc/hosts /etc/hosts
+        sudo cp etc/hostname /etc/hostname
+        sudo /etc/init.d/hostname.sh
 
         echo "Installer finished"
         echo "You should reboot your RPi now..."

@@ -65,6 +65,7 @@ function error_img () {
 // Ajax Status
 //
 var ajax_status;
+var bot_alert_msg;
 
 if(window.XMLHttpRequest) {
   ajax_status = new XMLHttpRequest();
@@ -79,37 +80,68 @@ ajax_status.onreadystatechange = function() {
 
     if(ajax_status.responseText == "ready") {
       document.getElementById("video_button").disabled = false;
-      document.getElementById("video_button").value = "record video start";
+      document.getElementById("video_button").value = "Record Video Start";
       document.getElementById("video_button").onclick = function() {send_cmd("ca 1");};
       document.getElementById("image_button").disabled = false;
-      document.getElementById("image_button").value = "record image";
+      document.getElementById("image_button").value = "Record Image";
       document.getElementById("image_button").onclick = function() {send_cmd("im");};
       document.getElementById("timelapse_button").disabled = false;
-      document.getElementById("timelapse_button").value = "timelapse start";
+      document.getElementById("timelapse_button").value = "Timelapse Start";
       document.getElementById("timelapse_button").onclick = function() {send_cmd("tl " + (document.getElementById("tl_interval").value*10));};
       document.getElementById("md_button").disabled = false;
-      document.getElementById("md_button").value = "motion detection start";
+      document.getElementById("md_button").value = "Motion Detection Start";
       document.getElementById("md_button").onclick = function() {send_cmd("md 1");};
       document.getElementById("halt_button").disabled = false;
-      document.getElementById("halt_button").value = "stop camera";
+      document.getElementById("halt_button").value = "Stop Camera";
       document.getElementById("halt_button").onclick = function() {send_cmd("ru 0");};
+      document.getElementById("bot_play_song_button").disabled = false;
+      document.getElementById("bot_play_song_button").value = "Play a song";
+      document.getElementById("bot_play_song_button").onclick = function() {
+        send_bot_cmd("mbot_play_song.py");
+      };
+      document.getElementById("bot_blink_led").disabled = false;
+      document.getElementById("bot_blink_led").value = "Blink LEDs";
+      document.getElementById("bot_blink_led").onclick = function() {
+        send_bot_cmd("mbot_blink_led.py");
+      };
+      document.getElementById("bot_abort_button").disabled = false;
+      document.getElementById("bot_abort_button").value = "Abort Print";
+      document.getElementById("bot_abort_button").onclick = function() {
+        bot_alert_msg="Are you sure you want to\nABORT THE CURRENT PRINT JOB?";
+        send_bot_cmd_alert("mbot_abort.py");
+      };
+      document.getElementById("bot_refresh_stats_button").disabled = false;
+      document.getElementById("bot_refresh_stats_button").value = "Refresh stats";
+      document.getElementById("bot_refresh_stats_button").onclick = function() {send_bot_cmd("mbot_cmd.py");};
+      document.getElementById("pi_reboot").disabled = false;
+      document.getElementById("pi_reboot").value = "Reboot RPi";
+      document.getElementById("pi_reboot").onclick = function() {
+        bot_alert_msg="This will reboot the Raspberry,\nare you sure?";
+        send_bot_cmd_alert("pi_reboot.py");
+      };
+      document.getElementById("pi_shutdown").disabled = false;
+      document.getElementById("pi_shutdown").value = "Shutdown RPi";
+      document.getElementById("pi_shutdown").onclick = function() {
+        bot_alert_msg="This will SHUTDOWN the Raspberry,\nARE YOU SURE?";
+        send_bot_cmd_alert("pi_shutdown.py");
+      };
       halted = 0;
     }
     else if(ajax_status.responseText == "md_ready") {
       document.getElementById("video_button").disabled = true;
-      document.getElementById("video_button").value = "record video start";
+      document.getElementById("video_button").value = "Record Video Start";
       document.getElementById("video_button").onclick = function() {};
       document.getElementById("image_button").disabled = true;
-      document.getElementById("image_button").value = "record image";
+      document.getElementById("image_button").value = "Record Image";
       document.getElementById("image_button").onclick = function() {};
       document.getElementById("timelapse_button").disabled = true;
-      document.getElementById("timelapse_button").value = "timelapse start";
+      document.getElementById("timelapse_button").value = "Timelapse Start";
       document.getElementById("timelapse_button").onclick = function() {};
       document.getElementById("md_button").disabled = false;
       document.getElementById("md_button").value = "motion detection stop";
       document.getElementById("md_button").onclick = function() {send_cmd("md 0");};
       document.getElementById("halt_button").disabled = true;
-      document.getElementById("halt_button").value = "stop camera";
+      document.getElementById("halt_button").value = "Stop Camera";
       document.getElementById("halt_button").onclick = function() {};
       halted = 0;
     }
@@ -118,67 +150,67 @@ ajax_status.onreadystatechange = function() {
       document.getElementById("video_button").value = "record video stop";
       document.getElementById("video_button").onclick = function() {send_cmd("ca 0");};
       document.getElementById("image_button").disabled = true;
-      document.getElementById("image_button").value = "record image";
+      document.getElementById("image_button").value = "Record Image";
       document.getElementById("image_button").onclick = function() {};
       document.getElementById("timelapse_button").disabled = true;
-      document.getElementById("timelapse_button").value = "timelapse start";
+      document.getElementById("timelapse_button").value = "Timelapse Start";
       document.getElementById("timelapse_button").onclick = function() {};
       document.getElementById("md_button").disabled = true;
-      document.getElementById("md_button").value = "motion detection start";
+      document.getElementById("md_button").value = "Motion Detection Start";
       document.getElementById("md_button").onclick = function() {};
       document.getElementById("halt_button").disabled = true;
-      document.getElementById("halt_button").value = "stop camera";
+      document.getElementById("halt_button").value = "Stop Camera";
       document.getElementById("halt_button").onclick = function() {};
     }
     else if(ajax_status.responseText == "timelapse") {
       document.getElementById("video_button").disabled = true;
-      document.getElementById("video_button").value = "record video start";
+      document.getElementById("video_button").value = "Record Video Start";
       document.getElementById("video_button").onclick = function() {};
       document.getElementById("image_button").disabled = true;
-      document.getElementById("image_button").value = "record image";
+      document.getElementById("image_button").value = "Record Image";
       document.getElementById("image_button").onclick = function() {};
       document.getElementById("timelapse_button").disabled = false;
       document.getElementById("timelapse_button").value = "timelapse stop";
       document.getElementById("timelapse_button").onclick = function() {send_cmd("tl 0");};
       document.getElementById("md_button").disabled = true;
-      document.getElementById("md_button").value = "motion detection start";
+      document.getElementById("md_button").value = "Motion Detection Start";
       document.getElementById("md_button").onclick = function() {};
       document.getElementById("halt_button").disabled = true;
-      document.getElementById("halt_button").value = "stop camera";
+      document.getElementById("halt_button").value = "Stop Camera";
       document.getElementById("halt_button").onclick = function() {};
     }
     else if(ajax_status.responseText == "md_video") {
       document.getElementById("video_button").disabled = true;
-      document.getElementById("video_button").value = "record video start";
+      document.getElementById("video_button").value = "Record Video Start";
       document.getElementById("video_button").onclick = function() {};
       document.getElementById("image_button").disabled = true;
-      document.getElementById("image_button").value = "record image";
+      document.getElementById("image_button").value = "Record Image";
       document.getElementById("image_button").onclick = function() {};
       document.getElementById("timelapse_button").disabled = true;
-      document.getElementById("timelapse_button").value = "timelapse start";
+      document.getElementById("timelapse_button").value = "Timelapse Start";
       document.getElementById("timelapse_button").onclick = function() {};
       document.getElementById("md_button").disabled = true;
       document.getElementById("md_button").value = "recording video...";
       document.getElementById("md_button").onclick = function() {};
       document.getElementById("halt_button").disabled = true;
-      document.getElementById("halt_button").value = "stop camera";
+      document.getElementById("halt_button").value = "Stop Camera";
       document.getElementById("halt_button").onclick = function() {};
     }
     else if(ajax_status.responseText == "image") {
       document.getElementById("video_button").disabled = true;
-      document.getElementById("video_button").value = "record video start";
+      document.getElementById("video_button").value = "Record Video Start";
       document.getElementById("video_button").onclick = function() {};
       document.getElementById("image_button").disabled = true;
       document.getElementById("image_button").value = "recording image";
       document.getElementById("image_button").onclick = function() {};
       document.getElementById("timelapse_button").disabled = true;
-      document.getElementById("timelapse_button").value = "timelapse start";
+      document.getElementById("timelapse_button").value = "Timelapse Start";
       document.getElementById("timelapse_button").onclick = function() {};
       document.getElementById("md_button").disabled = true;
-      document.getElementById("md_button").value = "motion detection start";
+      document.getElementById("md_button").value = "Motion Detection Start";
       document.getElementById("md_button").onclick = function() {};
       document.getElementById("halt_button").disabled = true;
-      document.getElementById("halt_button").value = "stop camera";
+      document.getElementById("halt_button").value = "Stop Camera";
       document.getElementById("halt_button").onclick = function() {};
     }
     else if(ajax_status.responseText == "boxing") {
@@ -186,47 +218,47 @@ ajax_status.onreadystatechange = function() {
       document.getElementById("video_button").value = "video processing...";
       document.getElementById("video_button").onclick = function() {};
       document.getElementById("image_button").disabled = true;
-      document.getElementById("image_button").value = "record image";
+      document.getElementById("image_button").value = "Record Image";
       document.getElementById("image_button").onclick = function() {};
       document.getElementById("timelapse_button").disabled = true;
-      document.getElementById("timelapse_button").value = "timelapse start";
+      document.getElementById("timelapse_button").value = "Timelapse Start";
       document.getElementById("timelapse_button").onclick = function() {};
       document.getElementById("md_button").disabled = true;
-      document.getElementById("md_button").value = "motion detection start";
+      document.getElementById("md_button").value = "Motion Detection Start";
       document.getElementById("md_button").onclick = function() {};
       document.getElementById("halt_button").disabled = true;
-      document.getElementById("halt_button").value = "stop camera";
+      document.getElementById("halt_button").value = "Stop Camera";
       document.getElementById("halt_button").onclick = function() {};
     }
     else if(ajax_status.responseText == "md_boxing") {
       document.getElementById("video_button").disabled = true;
-      document.getElementById("video_button").value = "record video start";
+      document.getElementById("video_button").value = "Record Video Start";
       document.getElementById("video_button").onclick = function() {};
       document.getElementById("image_button").disabled = true;
-      document.getElementById("image_button").value = "record image";
+      document.getElementById("image_button").value = "Record Image";
       document.getElementById("image_button").onclick = function() {};
       document.getElementById("timelapse_button").disabled = true;
-      document.getElementById("timelapse_button").value = "timelapse start";
+      document.getElementById("timelapse_button").value = "Timelapse Start";
       document.getElementById("timelapse_button").onclick = function() {};
       document.getElementById("md_button").disabled = true;
       document.getElementById("md_button").value = "video processing...";
       document.getElementById("md_button").onclick = function() {};
       document.getElementById("halt_button").disabled = true;
-      document.getElementById("halt_button").value = "stop camera";
+      document.getElementById("halt_button").value = "Stop Camera";
       document.getElementById("halt_button").onclick = function() {};
     }
     else if(ajax_status.responseText == "halted") {
       document.getElementById("video_button").disabled = true;
-      document.getElementById("video_button").value = "record video start";
+      document.getElementById("video_button").value = "Record Video Start";
       document.getElementById("video_button").onclick = function() {};
       document.getElementById("image_button").disabled = true;
-      document.getElementById("image_button").value = "record image";
+      document.getElementById("image_button").value = "Record Image";
       document.getElementById("image_button").onclick = function() {};
       document.getElementById("timelapse_button").disabled = true;
-      document.getElementById("timelapse_button").value = "timelapse start";
+      document.getElementById("timelapse_button").value = "Timelapse Start";
       document.getElementById("timelapse_button").onclick = function() {};
       document.getElementById("md_button").disabled = true;
-      document.getElementById("md_button").value = "motion detection start";
+      document.getElementById("md_button").value = "Motion Detection Start";
       document.getElementById("md_button").onclick = function() {};
       document.getElementById("halt_button").disabled = false;
       document.getElementById("halt_button").value = "start camera";
@@ -245,6 +277,10 @@ function reload_ajax (last) {
   ajax_status.send();
 }
 
+//
+// BOT COMMANDS
+//
+
 
 //
 // Ajax Commands
@@ -261,6 +297,20 @@ else {
 function send_cmd (cmd) {
   ajax_cmd.open("GET","cmd_pipe.php?cmd=" + cmd,true);
   ajax_cmd.send();
+}
+
+// Send BOT CMD
+function send_bot_cmd (cmd) {
+  ajax_cmd.open("GET","cmd_bot_pipe.php?cmd=" + cmd,true);
+  ajax_cmd.send();
+}
+
+function send_bot_cmd_alert (cmd) {
+  if (confirm(bot_alert_msg) == true) {
+    ajax_cmd.open("GET","cmd_bot_pipe.php?cmd=" + cmd,true);
+    ajax_cmd.send();
+  } else {
+  }
 }
 
 //
