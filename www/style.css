@@ -4,6 +4,26 @@ body {
 	font: 12px/1.5 "segoe ui","lucida sans unicode","lucida grande",lucida,sans-serif;
 }
 
+a:link {
+	color: #1A3333;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #1A3333;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #1A3333;
+	text-decoration: underline;
+}
+
+a:active {
+	color: #1A3333;
+	text-decoration: none;
+}
+
 .tg {
 	border-collapse:collapse;
 	border-spacing:0;

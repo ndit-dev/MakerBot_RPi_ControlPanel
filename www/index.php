@@ -3,7 +3,7 @@
 	<head>
 		<title>NDBot RPi Control Panel</title>
 		<script src="script.js"></script>
-	<?php include('mbot_stats.php'); ?>
+		<?php include('mbot_stats.php'); ?>
 		<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 	</head>
 	<body onload="setTimeout('init();', 100);">
