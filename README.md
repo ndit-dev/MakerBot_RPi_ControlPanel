@@ -15,7 +15,7 @@ This interface has potential to do alot more things with your bot than i do here
 # TODO
  - test scripts (and adopt to) with a printer with dual tool heads and maybe a heated print bed (Replicator 2x)
  - make some kind of global setting for serial port to be set in all the python scripts
-
+ 
 # Install
 <b>1.</b> install raspian on your Pi and connect and activate your PiCam and set time zone with
 
@@ -74,3 +74,4 @@ For full documentation of the simple and brilliant RPi_Cam_Web_interface, visit 
 ![](http://i.imgur.com/7TxEaoR.png)
 ![](http://i.imgur.com/woc2r3f.png)
 ![](http://i.imgur.com/6DpTOkx.png)
+

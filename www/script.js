@@ -77,6 +77,37 @@ else {
 
 ajax_status.onreadystatechange = function() {
   if(ajax_status.readyState == 4 && ajax_status.status == 200) {
+		document.getElementById("bot_play_song_button").disabled = false;
+		document.getElementById("bot_play_song_button").value = "Play a song";
+		document.getElementById("bot_play_song_button").onclick = function() {
+			send_bot_cmd("mbot_play_song.py");
+		};
+		document.getElementById("bot_blink_led").disabled = false;
+		document.getElementById("bot_blink_led").value = "Blink LEDs";
+		document.getElementById("bot_blink_led").onclick = function() {
+	  	send_bot_cmd("mbot_blink_led.py");
+		};
+		document.getElementById("bot_abort_button").disabled = false;
+		document.getElementById("bot_abort_button").value = "Abort Print";
+		document.getElementById("bot_abort_button").onclick = function() {
+			bot_alert_msg="Are you sure you want to\nABORT THE CURRENT PRINT JOB?";
+			send_bot_cmd_alert("mbot_abort.py");
+		};
+		document.getElementById("bot_refresh_stats_button").disabled = false;
+		document.getElementById("bot_refresh_stats_button").value = "Refresh stats";
+		document.getElementById("bot_refresh_stats_button").onclick = function() {send_bot_cmd("mbot_cmd.py");};
+		document.getElementById("pi_reboot").disabled = false;
+		document.getElementById("pi_reboot").value = "Reboot RPi";
+		document.getElementById("pi_reboot").onclick = function() {
+			bot_alert_msg="This will reboot the Raspberry,\nare you sure?";
+			send_bot_cmd_alert("pi_reboot.py");
+		};
+		document.getElementById("pi_shutdown").disabled = false;
+		document.getElementById("pi_shutdown").value = "Shutdown RPi";
+		document.getElementById("pi_shutdown").onclick = function() {
+			bot_alert_msg="This will SHUTDOWN the Raspberry,\nARE YOU SURE?";
+			send_bot_cmd_alert("pi_shutdown.py");
+		};
 
     if(ajax_status.responseText == "ready") {
       document.getElementById("video_button").disabled = false;
@@ -94,37 +125,6 @@ ajax_status.onreadystatechange = function() {
       document.getElementById("halt_button").disabled = false;
       document.getElementById("halt_button").value = "Stop Camera";
       document.getElementById("halt_button").onclick = function() {send_cmd("ru 0");};
-      document.getElementById("bot_play_song_button").disabled = false;
-      document.getElementById("bot_play_song_button").value = "Play a song";
-      document.getElementById("bot_play_song_button").onclick = function() {
-        send_bot_cmd("mbot_play_song.py");
-      };
-      document.getElementById("bot_blink_led").disabled = false;
-      document.getElementById("bot_blink_led").value = "Blink LEDs";
-      document.getElementById("bot_blink_led").onclick = function() {
-        send_bot_cmd("mbot_blink_led.py");
-      };
-      document.getElementById("bot_abort_button").disabled = false;
-      document.getElementById("bot_abort_button").value = "Abort Print";
-      document.getElementById("bot_abort_button").onclick = function() {
-        bot_alert_msg="Are you sure you want to\nABORT THE CURRENT PRINT JOB?";
-        send_bot_cmd_alert("mbot_abort.py");
-      };
-      document.getElementById("bot_refresh_stats_button").disabled = false;
-      document.getElementById("bot_refresh_stats_button").value = "Refresh stats";
-      document.getElementById("bot_refresh_stats_button").onclick = function() {send_bot_cmd("mbot_cmd.py");};
-      document.getElementById("pi_reboot").disabled = false;
-      document.getElementById("pi_reboot").value = "Reboot RPi";
-      document.getElementById("pi_reboot").onclick = function() {
-        bot_alert_msg="This will reboot the Raspberry,\nare you sure?";
-        send_bot_cmd_alert("pi_reboot.py");
-      };
-      document.getElementById("pi_shutdown").disabled = false;
-      document.getElementById("pi_shutdown").value = "Shutdown RPi";
-      document.getElementById("pi_shutdown").onclick = function() {
-        bot_alert_msg="This will SHUTDOWN the Raspberry,\nARE YOU SURE?";
-        send_bot_cmd_alert("pi_shutdown.py");
-      };
       halted = 0;
     }
     else if(ajax_status.responseText == "md_ready") {
@@ -143,37 +143,6 @@ ajax_status.onreadystatechange = function() {
       document.getElementById("halt_button").disabled = true;
       document.getElementById("halt_button").value = "Stop Camera";
       document.getElementById("halt_button").onclick = function() {};
-      document.getElementById("bot_play_song_button").disabled = false;
-      document.getElementById("bot_play_song_button").value = "Play a song";
-      document.getElementById("bot_play_song_button").onclick = function() {
-        send_bot_cmd("mbot_play_song.py");
-      };
-      document.getElementById("bot_blink_led").disabled = false;
-      document.getElementById("bot_blink_led").value = "Blink LEDs";
-      document.getElementById("bot_blink_led").onclick = function() {
-        send_bot_cmd("mbot_blink_led.py");
-      };
-      document.getElementById("bot_abort_button").disabled = false;
-      document.getElementById("bot_abort_button").value = "Abort Print";
-      document.getElementById("bot_abort_button").onclick = function() {
-        bot_alert_msg="Are you sure you want to\nABORT THE CURRENT PRINT JOB?";
-        send_bot_cmd_alert("mbot_abort.py");
-      };
-      document.getElementById("bot_refresh_stats_button").disabled = false;
-      document.getElementById("bot_refresh_stats_button").value = "Refresh stats";
-      document.getElementById("bot_refresh_stats_button").onclick = function() {send_bot_cmd("mbot_cmd.py");};
-      document.getElementById("pi_reboot").disabled = false;
-      document.getElementById("pi_reboot").value = "Reboot RPi";
-      document.getElementById("pi_reboot").onclick = function() {
-        bot_alert_msg="This will reboot the Raspberry,\nare you sure?";
-        send_bot_cmd_alert("pi_reboot.py");
-      };
-      document.getElementById("pi_shutdown").disabled = false;
-      document.getElementById("pi_shutdown").value = "Shutdown RPi";
-      document.getElementById("pi_shutdown").onclick = function() {
-        bot_alert_msg="This will SHUTDOWN the Raspberry,\nARE YOU SURE?";
-        send_bot_cmd_alert("pi_shutdown.py");
-      };
       halted = 0;
     }
     else if(ajax_status.responseText == "video") {
@@ -192,37 +161,6 @@ ajax_status.onreadystatechange = function() {
       document.getElementById("halt_button").disabled = true;
       document.getElementById("halt_button").value = "Stop Camera";
       document.getElementById("halt_button").onclick = function() {};
-      document.getElementById("bot_play_song_button").disabled = false;
-      document.getElementById("bot_play_song_button").value = "Play a song";
-      document.getElementById("bot_play_song_button").onclick = function() {
-        send_bot_cmd("mbot_play_song.py");
-      };
-      document.getElementById("bot_blink_led").disabled = false;
-      document.getElementById("bot_blink_led").value = "Blink LEDs";
-      document.getElementById("bot_blink_led").onclick = function() {
-        send_bot_cmd("mbot_blink_led.py");
-      };
-      document.getElementById("bot_abort_button").disabled = false;
-      document.getElementById("bot_abort_button").value = "Abort Print";
-      document.getElementById("bot_abort_button").onclick = function() {
-        bot_alert_msg="Are you sure you want to\nABORT THE CURRENT PRINT JOB?";
-        send_bot_cmd_alert("mbot_abort.py");
-      };
-      document.getElementById("bot_refresh_stats_button").disabled = false;
-      document.getElementById("bot_refresh_stats_button").value = "Refresh stats";
-      document.getElementById("bot_refresh_stats_button").onclick = function() {send_bot_cmd("mbot_cmd.py");};
-      document.getElementById("pi_reboot").disabled = false;
-      document.getElementById("pi_reboot").value = "Reboot RPi";
-      document.getElementById("pi_reboot").onclick = function() {
-        bot_alert_msg="This will reboot the Raspberry,\nare you sure?";
-        send_bot_cmd_alert("pi_reboot.py");
-      };
-      document.getElementById("pi_shutdown").disabled = false;
-      document.getElementById("pi_shutdown").value = "Shutdown RPi";
-      document.getElementById("pi_shutdown").onclick = function() {
-        bot_alert_msg="This will SHUTDOWN the Raspberry,\nARE YOU SURE?";
-        send_bot_cmd_alert("pi_shutdown.py");
-      };
     }
     else if(ajax_status.responseText == "timelapse") {
       document.getElementById("video_button").disabled = true;
@@ -240,37 +178,6 @@ ajax_status.onreadystatechange = function() {
       document.getElementById("halt_button").disabled = true;
       document.getElementById("halt_button").value = "Stop Camera";
       document.getElementById("halt_button").onclick = function() {};
-      document.getElementById("bot_play_song_button").disabled = false;
-      document.getElementById("bot_play_song_button").value = "Play a song";
-      document.getElementById("bot_play_song_button").onclick = function() {
-        send_bot_cmd("mbot_play_song.py");
-      };
-      document.getElementById("bot_blink_led").disabled = false;
-      document.getElementById("bot_blink_led").value = "Blink LEDs";
-      document.getElementById("bot_blink_led").onclick = function() {
-        send_bot_cmd("mbot_blink_led.py");
-      };
-      document.getElementById("bot_abort_button").disabled = false;
-      document.getElementById("bot_abort_button").value = "Abort Print";
-      document.getElementById("bot_abort_button").onclick = function() {
-        bot_alert_msg="Are you sure you want to\nABORT THE CURRENT PRINT JOB?";
-        send_bot_cmd_alert("mbot_abort.py");
-      };
-      document.getElementById("bot_refresh_stats_button").disabled = false;
-      document.getElementById("bot_refresh_stats_button").value = "Refresh stats";
-      document.getElementById("bot_refresh_stats_button").onclick = function() {send_bot_cmd("mbot_cmd.py");};
-      document.getElementById("pi_reboot").disabled = false;
-      document.getElementById("pi_reboot").value = "Reboot RPi";
-      document.getElementById("pi_reboot").onclick = function() {
-        bot_alert_msg="This will reboot the Raspberry,\nare you sure?";
-        send_bot_cmd_alert("pi_reboot.py");
-      };
-      document.getElementById("pi_shutdown").disabled = false;
-      document.getElementById("pi_shutdown").value = "Shutdown RPi";
-      document.getElementById("pi_shutdown").onclick = function() {
-        bot_alert_msg="This will SHUTDOWN the Raspberry,\nARE YOU SURE?";
-        send_bot_cmd_alert("pi_shutdown.py");
-      };
     }
     else if(ajax_status.responseText == "md_video") {
       document.getElementById("video_button").disabled = true;
@@ -288,37 +195,6 @@ ajax_status.onreadystatechange = function() {
       document.getElementById("halt_button").disabled = true;
       document.getElementById("halt_button").value = "Stop Camera";
       document.getElementById("halt_button").onclick = function() {};
-      document.getElementById("bot_play_song_button").disabled = false;
-      document.getElementById("bot_play_song_button").value = "Play a song";
-      document.getElementById("bot_play_song_button").onclick = function() {
-        send_bot_cmd("mbot_play_song.py");
-      };
-      document.getElementById("bot_blink_led").disabled = false;
-      document.getElementById("bot_blink_led").value = "Blink LEDs";
-      document.getElementById("bot_blink_led").onclick = function() {
-        send_bot_cmd("mbot_blink_led.py");
-      };
-      document.getElementById("bot_abort_button").disabled = false;
-      document.getElementById("bot_abort_button").value = "Abort Print";
-      document.getElementById("bot_abort_button").onclick = function() {
-        bot_alert_msg="Are you sure you want to\nABORT THE CURRENT PRINT JOB?";
-        send_bot_cmd_alert("mbot_abort.py");
-      };
-      document.getElementById("bot_refresh_stats_button").disabled = false;
-      document.getElementById("bot_refresh_stats_button").value = "Refresh stats";
-      document.getElementById("bot_refresh_stats_button").onclick = function() {send_bot_cmd("mbot_cmd.py");};
-      document.getElementById("pi_reboot").disabled = false;
-      document.getElementById("pi_reboot").value = "Reboot RPi";
-      document.getElementById("pi_reboot").onclick = function() {
-        bot_alert_msg="This will reboot the Raspberry,\nare you sure?";
-        send_bot_cmd_alert("pi_reboot.py");
-      };
-      document.getElementById("pi_shutdown").disabled = false;
-      document.getElementById("pi_shutdown").value = "Shutdown RPi";
-      document.getElementById("pi_shutdown").onclick = function() {
-        bot_alert_msg="This will SHUTDOWN the Raspberry,\nARE YOU SURE?";
-        send_bot_cmd_alert("pi_shutdown.py");
-      };
     }
     else if(ajax_status.responseText == "image") {
       document.getElementById("video_button").disabled = true;
@@ -336,37 +212,6 @@ ajax_status.onreadystatechange = function() {
       document.getElementById("halt_button").disabled = true;
       document.getElementById("halt_button").value = "Stop Camera";
       document.getElementById("halt_button").onclick = function() {};
-      document.getElementById("bot_play_song_button").disabled = false;
-      document.getElementById("bot_play_song_button").value = "Play a song";
-      document.getElementById("bot_play_song_button").onclick = function() {
-        send_bot_cmd("mbot_play_song.py");
-      };
-      document.getElementById("bot_blink_led").disabled = false;
-      document.getElementById("bot_blink_led").value = "Blink LEDs";
-      document.getElementById("bot_blink_led").onclick = function() {
-        send_bot_cmd("mbot_blink_led.py");
-      };
-      document.getElementById("bot_abort_button").disabled = false;
-      document.getElementById("bot_abort_button").value = "Abort Print";
-      document.getElementById("bot_abort_button").onclick = function() {
-        bot_alert_msg="Are you sure you want to\nABORT THE CURRENT PRINT JOB?";
-        send_bot_cmd_alert("mbot_abort.py");
-      };
-      document.getElementById("bot_refresh_stats_button").disabled = false;
-      document.getElementById("bot_refresh_stats_button").value = "Refresh stats";
-      document.getElementById("bot_refresh_stats_button").onclick = function() {send_bot_cmd("mbot_cmd.py");};
-      document.getElementById("pi_reboot").disabled = false;
-      document.getElementById("pi_reboot").value = "Reboot RPi";
-      document.getElementById("pi_reboot").onclick = function() {
-        bot_alert_msg="This will reboot the Raspberry,\nare you sure?";
-        send_bot_cmd_alert("pi_reboot.py");
-      };
-      document.getElementById("pi_shutdown").disabled = false;
-      document.getElementById("pi_shutdown").value = "Shutdown RPi";
-      document.getElementById("pi_shutdown").onclick = function() {
-        bot_alert_msg="This will SHUTDOWN the Raspberry,\nARE YOU SURE?";
-        send_bot_cmd_alert("pi_shutdown.py");
-      };
     }
     else if(ajax_status.responseText == "boxing") {
       document.getElementById("video_button").disabled = true;
@@ -384,37 +229,6 @@ ajax_status.onreadystatechange = function() {
       document.getElementById("halt_button").disabled = true;
       document.getElementById("halt_button").value = "Stop Camera";
       document.getElementById("halt_button").onclick = function() {};
-      document.getElementById("bot_play_song_button").disabled = false;
-      document.getElementById("bot_play_song_button").value = "Play a song";
-      document.getElementById("bot_play_song_button").onclick = function() {
-        send_bot_cmd("mbot_play_song.py");
-      };
-      document.getElementById("bot_blink_led").disabled = false;
-      document.getElementById("bot_blink_led").value = "Blink LEDs";
-      document.getElementById("bot_blink_led").onclick = function() {
-        send_bot_cmd("mbot_blink_led.py");
-      };
-      document.getElementById("bot_abort_button").disabled = false;
-      document.getElementById("bot_abort_button").value = "Abort Print";
-      document.getElementById("bot_abort_button").onclick = function() {
-        bot_alert_msg="Are you sure you want to\nABORT THE CURRENT PRINT JOB?";
-        send_bot_cmd_alert("mbot_abort.py");
-      };
-      document.getElementById("bot_refresh_stats_button").disabled = false;
-      document.getElementById("bot_refresh_stats_button").value = "Refresh stats";
-      document.getElementById("bot_refresh_stats_button").onclick = function() {send_bot_cmd("mbot_cmd.py");};
-      document.getElementById("pi_reboot").disabled = false;
-      document.getElementById("pi_reboot").value = "Reboot RPi";
-      document.getElementById("pi_reboot").onclick = function() {
-        bot_alert_msg="This will reboot the Raspberry,\nare you sure?";
-        send_bot_cmd_alert("pi_reboot.py");
-      };
-      document.getElementById("pi_shutdown").disabled = false;
-      document.getElementById("pi_shutdown").value = "Shutdown RPi";
-      document.getElementById("pi_shutdown").onclick = function() {
-        bot_alert_msg="This will SHUTDOWN the Raspberry,\nARE YOU SURE?";
-        send_bot_cmd_alert("pi_shutdown.py");
-      };
     }
     else if(ajax_status.responseText == "md_boxing") {
       document.getElementById("video_button").disabled = true;
@@ -432,37 +246,6 @@ ajax_status.onreadystatechange = function() {
       document.getElementById("halt_button").disabled = true;
       document.getElementById("halt_button").value = "Stop Camera";
       document.getElementById("halt_button").onclick = function() {};
-      document.getElementById("bot_play_song_button").disabled = false;
-      document.getElementById("bot_play_song_button").value = "Play a song";
-      document.getElementById("bot_play_song_button").onclick = function() {
-        send_bot_cmd("mbot_play_song.py");
-      };
-      document.getElementById("bot_blink_led").disabled = false;
-      document.getElementById("bot_blink_led").value = "Blink LEDs";
-      document.getElementById("bot_blink_led").onclick = function() {
-        send_bot_cmd("mbot_blink_led.py");
-      };
-      document.getElementById("bot_abort_button").disabled = false;
-      document.getElementById("bot_abort_button").value = "Abort Print";
-      document.getElementById("bot_abort_button").onclick = function() {
-        bot_alert_msg="Are you sure you want to\nABORT THE CURRENT PRINT JOB?";
-        send_bot_cmd_alert("mbot_abort.py");
-      };
-      document.getElementById("bot_refresh_stats_button").disabled = false;
-      document.getElementById("bot_refresh_stats_button").value = "Refresh stats";
-      document.getElementById("bot_refresh_stats_button").onclick = function() {send_bot_cmd("mbot_cmd.py");};
-      document.getElementById("pi_reboot").disabled = false;
-      document.getElementById("pi_reboot").value = "Reboot RPi";
-      document.getElementById("pi_reboot").onclick = function() {
-        bot_alert_msg="This will reboot the Raspberry,\nare you sure?";
-        send_bot_cmd_alert("pi_reboot.py");
-      };
-      document.getElementById("pi_shutdown").disabled = false;
-      document.getElementById("pi_shutdown").value = "Shutdown RPi";
-      document.getElementById("pi_shutdown").onclick = function() {
-        bot_alert_msg="This will SHUTDOWN the Raspberry,\nARE YOU SURE?";
-        send_bot_cmd_alert("pi_shutdown.py");
-      };
     }
     else if(ajax_status.responseText == "halted") {
       document.getElementById("video_button").disabled = true;
@@ -480,37 +263,6 @@ ajax_status.onreadystatechange = function() {
       document.getElementById("halt_button").disabled = false;
       document.getElementById("halt_button").value = "start camera";
       document.getElementById("halt_button").onclick = function() {send_cmd("ru 1");};
-      document.getElementById("bot_play_song_button").disabled = false;
-      document.getElementById("bot_play_song_button").value = "Play a song";
-      document.getElementById("bot_play_song_button").onclick = function() {
-        send_bot_cmd("mbot_play_song.py");
-      };
-      document.getElementById("bot_blink_led").disabled = false;
-      document.getElementById("bot_blink_led").value = "Blink LEDs";
-      document.getElementById("bot_blink_led").onclick = function() {
-        send_bot_cmd("mbot_blink_led.py");
-      };
-      document.getElementById("bot_abort_button").disabled = false;
-      document.getElementById("bot_abort_button").value = "Abort Print";
-      document.getElementById("bot_abort_button").onclick = function() {
-        bot_alert_msg="Are you sure you want to\nABORT THE CURRENT PRINT JOB?";
-        send_bot_cmd_alert("mbot_abort.py");
-      };
-      document.getElementById("bot_refresh_stats_button").disabled = false;
-      document.getElementById("bot_refresh_stats_button").value = "Refresh stats";
-      document.getElementById("bot_refresh_stats_button").onclick = function() {send_bot_cmd("mbot_cmd.py");};
-      document.getElementById("pi_reboot").disabled = false;
-      document.getElementById("pi_reboot").value = "Reboot RPi";
-      document.getElementById("pi_reboot").onclick = function() {
-        bot_alert_msg="This will reboot the Raspberry,\nare you sure?";
-        send_bot_cmd_alert("pi_reboot.py");
-      };
-      document.getElementById("pi_shutdown").disabled = false;
-      document.getElementById("pi_shutdown").value = "Shutdown RPi";
-      document.getElementById("pi_shutdown").onclick = function() {
-        bot_alert_msg="This will SHUTDOWN the Raspberry,\nARE YOU SURE?";
-        send_bot_cmd_alert("pi_shutdown.py");
-      };
       halted = 1;
     }
     else if(ajax_status.responseText.substr(0,5) == "Error") alert("Error in RaspiMJPEG: " + ajax_status.responseText.substr(7) + "\nRestart RaspiMJPEG (./RPi_Cam_Web_Interface_Installer.sh start) or the whole RPi.");
@@ -526,9 +278,21 @@ function reload_ajax (last) {
 }
 
 //
-// BOT COMMANDS
+// BOT-related
 //
 
+// Start the refresh table function when the page loads
+$(document).ready(function(){
+  refreshTable();
+});
+
+// Update mbot_stats_holder div with the stats  
+// printed in mbot_stats_table.php
+function refreshTable(){
+  $('.mbot_stats_holder').load('mbot_stats_table.php', function(){
+    setTimeout(refreshTable, 5000);
+  });
+}
 
 //
 // Ajax Commands

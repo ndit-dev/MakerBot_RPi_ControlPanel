@@ -78,16 +78,18 @@ build_stats = {}
 build_stats = r.get_build_stats()
 
 # translate build states
-if build_stats['BuildState'] == 1:
-    build_stats['BuildState'] = 'No Build'
-elif build_stats['BuildState'] == 2:
+if build_stats['BuildState'] == 0:
+    build_stats['BuildState'] = 'Idle'
+elif build_stats['BuildState'] == 1:
     build_stats['BuildState'] = 'Build Running'
+elif build_stats['BuildState'] == 2:
+    build_stats['BuildState'] = 'Build Complete'
 elif build_stats['BuildState'] == 3:
-    build_stats['BuildState'] = 'Build Finished Normally'
+    build_stats['BuildState'] = 'Build Paused'
 elif build_stats['BuildState'] == 4:
     build_stats['BuildState'] = 'Build Canceled'
 elif build_stats['BuildState'] == 5:
-    build_stats['BuildState'] = 'Sleeping'
+    build_stats['BuildState'] = 'No Build Active'
 elif build_stats['BuildState'] == '0xFF':
     build_stats['BuildState'] = 'Build State Error'
 
